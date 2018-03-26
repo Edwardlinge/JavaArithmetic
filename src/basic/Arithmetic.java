@@ -16,7 +16,7 @@ public class Arithmetic {
 
     }
 
-    // TODO 算法就先放着吧，明天学数据结构去～
+    // TODO 算法就先放着吧，明天学数据结构去～。
 
 
     /**
