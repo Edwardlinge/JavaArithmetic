@@ -18,10 +18,15 @@ public class LinkListText {
 
         System.out.println("公众号：Java3y--------增加节点---------");
 
-        addData(3);
+        addData(2);
         addData(4);
         addData(5);
-        addData(6);
+        addData(1);
+        addData(32);
+        addData(4);
+        addData(3);
+        addData(3);
+        addData(2);
         traverse(head);
 
         System.out.println("公众号：Java3y--------增加节点---------");
@@ -45,6 +50,147 @@ public class LinkListText {
         traverse(head);
         System.out.println("公众号：Java3y--------删除节点---------");
 
+        System.out.println("公众号：Java3y--------排序---------");
+
+        sortLinkList(head);
+        traverse(head);
+
+        System.out.println("公众号：Java3y--------排序---------");
+
+
+        System.out.println("公众号：Java3y--------删除重复节点---------");
+
+        deleteDuplecate(head);
+        traverse(head);
+
+        System.out.println("公众号：Java3y--------删除重复节点---------");
+
+
+        System.out.println("公众号：Java3y--------倒数第n个节点---------");
+
+        //倒数第三个节点
+        Node kNode = findKNode(head, 3);
+        System.out.println(kNode.data);
+
+        System.out.println("公众号：Java3y--------倒数第n个节点---------");
+        System.out.println("公众号：Java3y--------倒着输出链表---------");
+
+        //从首节点开始
+        printListReversely(head.next);
+
+        System.out.println("公众号：Java3y--------倒着输出链表---------");
+
+        System.out.println("公众号：Java3y--------查询链表中间节点---------");
+
+        Node searchMid = searchMid(head);
+
+        System.out.println(searchMid.data);
+
+        System.out.println("公众号：Java3y--------查询链表中间节点---------");
+
+
+        System.out.println("公众号：Java3y--------链表反转---------");
+
+        Node reverseHead = reverseLinkList(head);
+
+
+        System.out.println("公众号：Java3y--------链表反转---------");
+
+
+    }
+
+
+    /**
+     * 实现链表的反转
+     *
+     * @param node 链表的头节点
+     */
+    public static Node reverseLinkList(Node node) {
+
+        Node prev;
+        if (node == null || node.next == null) {
+            prev = node;
+        } else {
+            Node tmp = reverseLinkList(node.next);
+            node.next.next = node;
+            node.next = null;
+            prev = tmp;
+        }
+        return prev;
+
+    }
+
+    /**
+     * 查询单链表的中间节点
+     */
+
+    public static Node searchMid(Node head) {
+
+        Node p1 = head;
+        Node p2 = head;
+
+
+        // 一个走一步，一个走两步，直到为null，走一步的到达的就是中间节点
+        while (p2 != null && p2.next != null && p2.next.next != null) {
+
+            p1 = p1.next;
+            p2 = p2.next.next;
+
+        }
+
+        return p1;
+
+
+    }
+
+    /**
+     * 通过递归从尾到头输出单链表
+     *
+     * @param head 头节点
+     */
+    public static void printListReversely(Node head) {
+        if (head != null) {
+
+            printListReversely(head.next);
+            System.out.println(head.data);
+        }
+    }
+
+
+    /**
+     * 删除链表重复数据(跟冒泡差不多，等于删除就是了)
+     *
+     * @param head 头节点
+     */
+    public static void deleteDuplecate(Node head) {
+
+        //临时节点，(从首节点开始-->真正有数据的节点)
+        Node temp = head.next;
+
+        //当前节点(首节点)的下一个节点
+        Node nextNode = temp.next;
+
+        while (temp.next != null) {
+
+            while (nextNode.next != null) {
+
+                if (nextNode.next.data == nextNode.data) {
+
+                    //将下一个节点删除(当前节点指向下下个节点)
+                    nextNode.next = nextNode.next.next;
+
+                } else {
+
+                    //继续下一个
+                    nextNode = nextNode.next;
+                }
+            }
+
+            //下一轮比较
+            temp = temp.next;
+        }
+
+
     }
 
     /**
@@ -65,6 +211,36 @@ public class LinkListText {
             //继续下一个
             temp = temp.next;
         }
+    }
+
+
+    /**
+     * 找到链表中倒数第k个节点(设置两个指针p1、p2，让p2比p1快k个节点，同时向后遍历，当p2为空，则p1为倒数第k个节点
+     *
+     * @param head
+     * @param k    倒数第k个节点
+     */
+    public static Node findKNode(Node head, int k) {
+
+        if (k < 1 || k > linkListLength(head))
+            return null;
+        Node p1 = head;
+        Node p2 = head;
+
+        // p2比怕p1快k个节点
+        for (int i = 0; i < k - 1; i++)
+            p2 = p2.next;
+
+
+        // 只要p2为null，那么p1就是倒数第k个节点了
+        while (p2.next != null) {
+
+            p2 = p2.next;
+            p1 = p1.next;
+        }
+        return p1;
+
+
     }
 
 
@@ -215,11 +391,29 @@ public class LinkListText {
      * 对链表进行排序
      *
      * @param head
-     * @param length 链表长度
      */
-    public static void sortLinkList(Node head, int length) {
+    public static void sortLinkList(Node head) {
 
 
+        Node currentNode;
+
+        Node nextNode;
+
+        for (currentNode = head.next; currentNode.next != null; currentNode = currentNode.next) {
+
+            for (nextNode = head.next; nextNode.next != null; nextNode = nextNode.next) {
+
+
+                if (nextNode.data > nextNode.next.data) {
+
+                    int temp = nextNode.data;
+                    nextNode.data = nextNode.next.data;
+
+                    nextNode.next.data = temp;
+
+                }
+            }
+        }
     }
 
 
