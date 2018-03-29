@@ -33,6 +33,15 @@ public class QueueTest {
         //遍历队列
         traverseQueue(queue);
 
+
+        //出队
+        outQueue(queue);
+        outQueue(queue);
+        outQueue(queue);
+        outQueue(queue);
+        outQueue(queue);
+        outQueue(queue);
+
     }
 
 
@@ -103,5 +112,27 @@ public class QueueTest {
             i = (i + 1) % queue.arrays.length;
         }
 
+    }
+
+
+    /**
+     * 出队
+     *
+     * @param queue
+     */
+    public static void outQueue(Queue queue) {
+
+        //判断该队列是否为null
+        if (!isEmpty(queue)) {
+
+
+            //不为空才出队
+            int value = queue.arrays[queue.front];
+            System.out.println("关注公众号：Java3y--->出队的元素是：" + value);
+
+            // front指针往后面移
+            queue.front = (queue.front + 1) % queue.arrays.length;
+
+        }
     }
 }

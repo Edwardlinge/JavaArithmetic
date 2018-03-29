@@ -15,7 +15,7 @@ public class Recursion {
 
         //int fibonacci = fibonacci(10);
         System.out.println("公众号：Java3y--------------------------------------------------" );
-        hanoi(5, 'A', 'B', 'C');
+        hanoi(3, 'A', 'B', 'C');
 
         System.out.println("公众号：Java3y--------------------------------------------------" );
 

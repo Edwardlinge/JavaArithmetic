@@ -3,7 +3,7 @@ package basic;
 /**
  * Created by zxc on 2018/3/23.
  */
-public class Arithmetic {
+public class ArithmeticOne {
 
     public static void main(String[] args) {
 
@@ -11,12 +11,13 @@ public class Arithmetic {
         //int num  = countWord("Please follow the Wechat public number");
 
 
-        isUgly(30);
-        System.out.println("关注公众号：Java3y--->" + "Please follow the Wechat public number");
+        //isUgly(30);
+        //System.out.println("关注公众号：Java3y--->" + "Please follow the Wechat public number");
+
+        //Factorial(3);
+
 
     }
-
-    // TODO 算法就先放着吧，明天学数据结构去～。
 
 
     /**
@@ -271,35 +272,7 @@ public class Arithmetic {
     }
 
 
-    /**
-     * 删除下标为k的元素
-     */
-    public static void deleteK() {
 
-
-        //固定的常量(比数组元素的个数要大)
-        int N = 10;
-
-        int[] arrays = new int[N];
-
-        //对数组进行初始化
-        for (int i = 0; i < 8; i++) {
-            arrays[i] = i;
-        }
-
-
-        //要删除下标
-        int k = 7;
-
-        for (int i = k; i < N - 1; i++) {
-            arrays[i] = arrays[i + 1];
-        }
-
-
-        System.out.println("公众号：Java3y" + arrays);
-
-
-    }
 
     /**
      * 1-n的阶乘之和
@@ -309,7 +282,7 @@ public class Arithmetic {
         //总和
         double sum = 0;
 
-        //阶乘值，从1开始
+        //阶乘值，初始化为1
         double factorial = 1;
 
         for (int i = 1; i <= n; i++) {
@@ -401,5 +374,6 @@ public class Arithmetic {
         System.out.println("公众号：Java3y" + "     " + sum);
 
     }
+
 
 }
