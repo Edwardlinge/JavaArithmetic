@@ -17,6 +17,8 @@ public class ArithmeticOne {
         //Factorial(3);
 
 
+
+
     }
 
 
@@ -128,6 +130,9 @@ public class ArithmeticOne {
         System.out.println("相同");
 
     }
+
+
+
 
     /**
      * 输入一段字符，计算出里面单词的个数
