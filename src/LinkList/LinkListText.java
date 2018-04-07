@@ -25,7 +25,9 @@ public class LinkListText {
         addData(32);
         addData(4);
         addData(3);
+        addData(5);
         addData(3);
+        addData(5);
         addData(2);
         traverse(head);
 
@@ -60,7 +62,7 @@ public class LinkListText {
 
         System.out.println("公众号：Java3y--------删除重复节点---------");
 
-        deleteDuplecate(head);
+        delete_v2(head);
         traverse(head);
 
         System.out.println("公众号：Java3y--------删除重复节点---------");
@@ -162,6 +164,7 @@ public class LinkListText {
      *
      * @param head 头节点
      */
+/*
     public static void deleteDuplecate(Node head) {
 
         //临时节点，(从首节点开始-->真正有数据的节点)
@@ -170,7 +173,7 @@ public class LinkListText {
         //当前节点(首节点)的下一个节点
         Node nextNode = temp.next;
 
-        while (temp.next != null) {
+        while (temp != null) {
 
             while (nextNode.next != null) {
 
@@ -192,7 +195,26 @@ public class LinkListText {
 
 
     }
+*/
 
+    /**
+     * 参考博文：https://blog.csdn.net/ifollowrivers/article/details/70161447
+     *  有三种解决方案
+     * @param head
+     */
+    public static void delete_v2(Node head){
+        Node p=head;
+        while(p!=null){
+            Node q=p;
+            while(q.next!=null){
+                if(q.next.data==p.data){
+                    q.next=q.next.next;
+                }else
+                    q=q.next;
+            }
+            p=p.next;
+        }
+    }
     /**
      * 遍历链表
      *

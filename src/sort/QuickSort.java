@@ -10,9 +10,10 @@ public class QuickSort {
 
 
     public static void main(String[] args) {
-        int[] arr = {1, 4, 5, 67, 2, 7, 8, 6, 9, 44};
+        //int[] arr = {1, 4, 5, 67, 2, 7, 8, 6, 9, 44, 34, 5, 5, 2, 34, 5, 62, 42, 1, 1324, 2346};
+        int[] arr={23,34,33,56,45};
+        quickSort(arr, 0, arr.length - 1);
 
-        quickSort(arr, 0, 9);
 
         System.out.println("Java3y   " + arr);
 

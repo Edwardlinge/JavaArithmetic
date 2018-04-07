@@ -16,6 +16,8 @@ public class ArithmeticOne {
 
         //Factorial(3);
 
+        Factorial(7);
+
 
 
 

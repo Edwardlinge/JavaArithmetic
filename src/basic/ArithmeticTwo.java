@@ -7,12 +7,218 @@ public class ArithmeticTwo {
 
     public static void main(String[] args) {
 
+      /*  String roman = "XVIII";
 
-        int[] arrays = {5, 5, 6, 4, 4, 6, 3};
+        int num = romanToNumber(roman, 0, roman.length() - 1);
 
-        //singleNumber(arrays);
+        System.out.println("关注公众号：Java3y--------------->" + num);*/
 
-        drawStar();
+
+        // beerAndDrink();
+
+/*        String s = "HELLO WORLD";
+        char[] ch = new char[s.length()];
+
+        for (int i = 0; i < s.length(); i++) {
+           ch[i] = (char) encode(s.charAt(i), 3);
+        }*/
+
+        int gcd = gcd(35, 5);
+
+        System.out.println("关注公众号：Java3y------------>" + gcd);
+
+
+
+
+    }
+
+
+    /**
+     * 求最大公约数
+     *
+     * @param num1
+     * @param num2
+     */
+    public static int gcd(int num1, int num2) {
+
+
+        // 求余数
+        int r = num1 % num2;
+
+        // 如果余数为0，那么除数就是最大公约数
+        if (r == 0) {
+            return num2;
+        } else {
+
+            // 否则，则用除数和余数来进行运算
+            return gcd(num2, r);
+        }
+
+    }
+
+    /**
+     * 右移
+     */
+    public static int rotateRight(int ch) {
+        if (ch >= 'A' && ch <= 'Y') {
+            return ch + 1;
+        } else if (ch >= 'a' && ch <= 'y') {
+            return ch + 1;
+        } else if (ch == 'Z') {
+            return 'A';
+        } else if (ch == 'z') {
+            return 'a';
+        } else {
+            return ch;
+        }
+    }
+
+    /**
+     * 左移
+     */
+    public static int rotateLeft(int ch) {
+        if (ch >= 'B' && ch <= 'Z') {
+            return ch - 1;
+        } else if (ch >= 'b' && ch <= 'z') {
+            return ch - 1;
+        } else if (ch == 'A') {
+            return 'Z';
+        } else if (ch == 'a') {
+            return 'z';
+        } else {
+            return ch;
+        }
+    }
+
+    /**
+     * 加密
+     * @param ch
+     * @param shift
+     * @return
+     */
+    public static int encode(int ch, int shift) {
+
+        // 如果没有移动，则直接返回
+        if (shift == 0) {
+            return ch;
+        } else if (shift > 0) {
+
+            // 如果shift移动的是正数，那么就向右移动
+            for (int i = 0; i < shift; i++) {
+                ch = rotateRight(ch);
+            }
+            return ch;
+        } else {
+
+            // 如果shift移动的是负数，那么就向左移动
+            for (int i = 0; i < -shift; i++) {
+                ch = rotateLeft(ch);
+            }
+            return ch;
+        }
+    }
+
+
+    /**
+     * 啤酒与饮料题目
+     */
+    public static void beerAndDrink() {
+
+        // 啤酒
+        for (int i = 0; i < 36; i++) {
+
+            // 饮料
+            for (int j = 0; j < 44; j++) {
+
+                // 钱刚好花光了，并且啤酒比饮料少
+                if (2.3 * i + j * 1.9 == 82.3 && i < j) {
+                    System.out.println("关注公众号：Java3y--------------->啤酒买了" + i);
+                }
+            }
+        }
+    }
+
+    /**
+     * 将罗马数字转成阿拉伯数字，实际上就是一个查表的过程
+     * -
+     *
+     * @param roman
+     * @return
+     */
+    public static int digitsToValues(char roman) {
+
+        // 定义罗马数字
+        char digits[] = {'I', 'V', 'X', 'L', 'C', 'D', 'M'};
+
+        // 罗马数字对应的阿拉伯数字
+        int values[] = {1, 5, 10, 50, 100, 500, 1000};
+
+
+        for (int i = 0; i < digits.length; i++) {
+            if (digits[i] == roman) {
+                return values[i];
+            }
+        }
+
+        return 0;
+
+    }
+
+    /**
+     * 找到当前罗马数字最大值的角标
+     *
+     * @param digits
+     * @return
+     */
+    public static int findMaxIndex(String digits, int L, int R) {
+
+        // 假设第一个是最大的
+        int max = digitsToValues(digits.charAt(L));
+        int maxIndex = L;
+
+        for (int i = L; i < R; i++) {
+            // 将罗马数字转成是阿拉伯数字
+            int num = digitsToValues(digits.charAt(i));
+            if (max < num) {
+                max = num;
+                maxIndex = i;
+            }
+        }
+
+        return maxIndex;
+    }
+
+
+    /**
+     * 将罗马数字转成阿拉伯数字
+     *
+     * @param romanNumber
+     * @param L
+     * @param R
+     */
+    public static int romanToNumber(String romanNumber, int L, int R) {
+
+        // 如果只有一个罗马数字，那么可以直接返回了(递归出口)
+        if (L == R) {
+            return digitsToValues(romanNumber.charAt(L));
+        } else if (L > R) { // 如果L和R已经越界了，那么说明没有值了
+            return 0;
+        } else {
+
+            // 找到当前罗马数字最大值的角标
+            int maxIndex = findMaxIndex(romanNumber, L, R);
+
+            // 得到最大值
+            int max = digitsToValues(romanNumber.charAt(maxIndex));
+
+            // 在最大值左边的，则用最大值减去左边的
+            int left = romanToNumber(romanNumber, L, maxIndex - 1);
+
+            // 在最大值右边的，则用最大值加上右边的
+            int right = romanToNumber(romanNumber, maxIndex + 1, R);
+
+            return max - left + right;
+        }
     }
 
 
