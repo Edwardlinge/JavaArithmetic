@@ -30,4 +30,4 @@ Java简单的算法题，目前有20道
 
 ## 五、LeetCode
 
-一些LeetCode的题目
+一些LeetCode的题目.
