@@ -37,6 +37,8 @@ Java简单的算法题，目前有20道
 	- 解法：使用Map来存储，如果发现`target-arr[i]`如果在Map中有数据，那返回下标即可
 - No3：求出数组能组成最大不重复元素的间隔
 	- 解法：使用滑动窗口的思想，不停往前移动，每次移动一次时计算max值，最终返回的一定是符合条件的最大值
+- No7：反转整数
+    - 解法：其实就是运用数学方法：`int pop = x % 10;x /= 10;rev = rev * 10 + pop;`。同时因为`res*10`可能会发生溢出，可以使用Math方法来判断一下：`if (rev > Integer.MAX_VALUE/10 || (rev == Integer.MAX_VALUE / 10 && pop > 7)) return 0;`
 - No17： 9宫格，例如：输入123能够组合成哪些字母
 	- 解法：将123..使用数组的方式来装载(类似于查表)，将输入的字符串123(digits)，从index开始，使用String s来记录每次可能得到的组合值。如果`index==digits.length`，说明已经是一种情况了。
 - No19：删除链表第n个元素，tips：删除链表元素最好使用一个dummyHead，这样就不用担心删除的是链表头了。使用方式：`dummyHead.next = head`
