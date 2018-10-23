@@ -53,6 +53,7 @@ public class MaxHeap<E extends Comparable<E>> {
 
     private void siftUp(int k){
 
+        // 只要子节点大于父节点，向上调整
         while(k > 0 && data.get(parent(k)).compareTo(data.get(k)) < 0 ){
             data.swap(k, parent(k));
             k = parent(k);
@@ -78,6 +79,7 @@ public class MaxHeap<E extends Comparable<E>> {
         return ret;
     }
 
+    // 向下调整，只要父节点小于子节点
     private void siftDown(int k){
 
         while(leftChild(k) < data.getSize()){
