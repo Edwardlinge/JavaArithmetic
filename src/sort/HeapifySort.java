@@ -12,7 +12,7 @@ public class HeapifySort {
 
         int[] arrays = {6, 3, 8, 5,2,-1,-5,-2,-6,345,7, 5, 1, 2, 23, 4321, 432, 3, 2, 34234, 2134, 1234, 5, 132423, 234, 4, 2, 4, 1, 5, 2, 5};
 
-        // 完成一次建堆
+        // 完成一次建堆..
         maxHeapify(arrays, arrays.length - 1);
         int size = arrays.length - 1;
 
