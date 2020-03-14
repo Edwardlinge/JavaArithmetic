@@ -1,4 +1,4 @@
-package stack;
+package datastructure.stack_old;
 
 /**
  * 栈的数据模型

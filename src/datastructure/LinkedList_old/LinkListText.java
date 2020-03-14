@@ -1,10 +1,10 @@
-package LinkList;
+package datastructure.LinkedList_old;
 
 /**
  * 链表测试
- * Created by ozc on 2018/3/27.
+ * Created by 公众号Java3y on 2018/3/27.
  *
- * @author ozc
+ * @author 公众号Java3y
  * @version 1.0
  */
 public class LinkListText {

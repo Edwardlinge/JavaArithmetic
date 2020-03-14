@@ -1,4 +1,4 @@
-package stack;
+package datastructure.stack_old;
 
 /**
  * 节点(组成栈)

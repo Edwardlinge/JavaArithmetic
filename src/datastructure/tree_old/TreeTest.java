@@ -1,4 +1,4 @@
-package tree;
+package datastructure.tree_old;
 
 /**
  * Created by ozc on 2018/3/20.

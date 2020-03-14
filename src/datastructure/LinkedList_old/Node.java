@@ -1,4 +1,4 @@
-package LinkList;
+package datastructure.LinkedList_old;
 
 /**
  * 链表的节点

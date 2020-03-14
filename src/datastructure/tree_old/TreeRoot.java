@@ -1,4 +1,4 @@
-package tree;
+package datastructure.tree_old;
 
 /**
  * 树的根节点
